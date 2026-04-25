@@ -25,6 +25,13 @@ export default function Login() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+
+        // DEMO BYPASS: If demo mode is enabled, skip API and go to dashboard
+        if (localStorage.getItem('vizzy_demo_mode') === 'true') {
+            navigate('/user/dashboard');
+            return;
+        }
+
         setIsLoading(true);
 
         try {

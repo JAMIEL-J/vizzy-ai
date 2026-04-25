@@ -33,7 +33,13 @@ export default function Register() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
-        
+
+        // DEMO BYPASS: If demo mode is enabled, skip API and go to dashboard
+        if (localStorage.getItem('vizzy_demo_mode') === 'true') {
+            navigate('/dashboard');
+            return;
+        }
+
         if (password !== confirmPassword) {
             setError('Passwords do not match');
             return;
@@ -205,13 +211,13 @@ export default function Register() {
     
     /* STEP 2 PASSWORD COMPONENT */
     return (
-        <div className="bg-background font-body text-on-surface min-h-screen flex items-center justify-center p-4 md:p-6 lg:p-8 antialiased relative">
+        <div className="bg-background font-body text-on-surface min-h-screen flex flex-col relative overflow-x-hidden">
             <div className="fixed top-6 right-6 z-50">
                 <ThemeToggle />
             </div>
-            {/* Auth Container */}
-            <main className="w-full max-w-6xl bg-surface-container-lowest rounded-xl overflow-hidden flex shadow-2xl min-h-[640px] my-auto relative">
-                {/* Left Panel: Brand Messaging & Checklist */}
+            <div className="flex-grow flex items-center justify-center p-4 md:p-6 lg:p-8 antialiased relative">
+                <main className="w-full max-w-6xl bg-surface-container-lowest rounded-xl overflow-hidden flex shadow-2xl relative min-h-[600px]">
+                    {/* Left Panel: Brand Messaging & Checklist */}
                 <section className="hidden lg:flex w-5/12 bg-surface-container-low p-12 flex-col justify-between relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, #c7c4d8 1px, transparent 0)", backgroundSize: "32px 32px" }}></div>
                     <div className="relative z-10">
@@ -400,6 +406,7 @@ export default function Register() {
                     </div>
                 </section>
             </main>
+            </div>
             <footer className="w-full max-w-6xl mx-auto flex justify-between items-center px-12 py-6 bg-transparent mt-4 opacity-70">
                 <div className="text-xs font-['Inter'] tracking-wide text-on-surface-variant">
                     © 2024 Alabaster Systems Inc.
