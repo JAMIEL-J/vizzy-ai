@@ -1,0 +1,77 @@
+{
+  "kpi_0": {
+    "title": "Churn Rate",
+    "value": 27.0,
+    "format": "percent",
+    "is_percentage": true,
+    "icon": "trending-down",
+    "confidence": "HIGH",
+    "reason": "Percentage of customers where Churn indicates departure"
+  },
+  "kpi_1": {
+    "title": "Retention Rate",
+    "value": 73.0,
+    "format": "percent",
+    "is_percentage": true,
+    "icon": "trending-up",
+    "confidence": "HIGH",
+    "reason": "Inverse of the churn rate"
+  },
+  "kpi_2": {
+    "title": "ARPU",
+    "value": 2730.28,
+    "format": "currency",
+    "is_percentage": false,
+    "icon": "user-plus",
+    "confidence": "HIGH",
+    "reason": "Average Total Charges per customer",
+    "subtitle": "Avg Revenue Per User"
+  },
+  "kpi_3": {
+    "title": "Estimated LTV",
+    "value": 10112.16,
+    "format": "currency",
+    "is_percentage": false,
+    "icon": "trending-up",
+    "confidence": "MEDIUM",
+    "reason": "ARPU / Churn Rate",
+    "subtitle": "Customer Lifetime Value"
+  },
+  "kpi_4": {
+    "title": "Avg Support Tickets",
+    "value": 2.12,
+    "format": "number",
+    "is_percentage": false,
+    "icon": "help-circle",
+    "confidence": "HIGH",
+    "reason": "Mean of Support_Tickets per customer",
+    "subtitle": "212 total tickets"
+  },
+  "kpi_5": {
+    "title": "Total Tech Tickets",
+    "value": 212,
+    "format": "number",
+    "is_percentage": false,
+    "icon": "settings",
+    "confidence": "HIGH",
+    "reason": "Sum of Support_Tickets"
+  },
+  "kpi_6": {
+    "title": "Total Admin Tickets",
+    "value": 212,
+    "format": "number",
+    "is_percentage": false,
+    "icon": "briefcase",
+    "confidence": "HIGH",
+    "reason": "Sum of Support_Tickets"
+  },
+  "kpi_7": {
+    "title": "Tech Ticket Share",
+    "value": 50.0,
+    "format": "percent",
+    "is_percentage": true,
+    "icon": "pie-chart",
+    "confidence": "HIGH",
+    "reason": "Tech tickets / (Tech + Admin) \u00d7 100"
+  }
+}

@@ -1,0 +1,21 @@
+# Python cache
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# Local data and tests
+**/tests/
+**/datasets/
+*.db
+*.duckdb
+.env
+.env.example

@@ -1,0 +1,17 @@
+{
+  "Metrics": [
+    "estimated total population number",
+    "Estimated prevalence of TB (all forms) per 100 000 population"
+  ],
+  "Dimensions": [
+    "Country or territory name",
+    "region"
+  ],
+  "Dates": [
+    "year"
+  ],
+  "Excluded": [
+    "ISO 2-character country/territory code",
+    "ISO 3-character country/territory code"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "Charts": [
+    {
+      "title": "Total Estimated Total Population Number by Country Map",
+      "type": "geo_map"
+    },
+    {
+      "title": "Total Estimated Total Population Number by Year Trend",
+      "type": "line"
+    },
+    {
+      "title": "Total Estimated Total Population Number by  vs Estimated Prevalence Of Tb (All Forms) Per 100 000 Population",
+      "type": "scatter"
+    },
+    {
+      "title": "Total Estimated Total Population Number by Country",
+      "type": "hbar"
+    },
+    {
+      "title": "Region Distribution",
+      "type": "pie"
+    },
+    {
+      "title": "Average Estimated Prevalence Of Tb (All Forms) Per 100 000 Population by Region",
+      "type": "hbar"
+    },
+    {
+      "title": "Country Distribution",
+      "type": "donut"
+    }
+  ]
+}

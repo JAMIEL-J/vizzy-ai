@@ -1,0 +1,434 @@
+/* Import Tailwind first */
+@import 'tailwindcss';
+
+/* Import custom animations (must come before any other statements) */
+@import './pages/public/landing.css';
+
+/* Tailwind v4: use .dark class strategy (config darkMode:'class' is ignored in v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Vizzy Custom Theme - Tailwind v4 */
+@theme {
+  --color-bg-hover: var(--bg-hover);
+  --color-themed-main: var(--text-main);
+  --color-themed-muted: var(--text-muted);
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  --color-border-main: var(--border-main);
+
+    --color-navy: #14213d;
+    --color-primary-blue: #2962ff;
+    --color-accent-cyan: #00c2ff;
+    --color-accent-orange: #ff6b35;
+    --color-admin-purple: #7c3aed;
+    --color-primary: var(--accent-primary);
+    --color-on-primary: #ffffff;
+    --color-background-light: #f8f6f5;
+    --color-background-dark: #0a0a0a;
+    --color-obsidian: #111111;
+    --color-marble: #1a1a1a;
+    
+    /* Template Specific Colors */
+    --color-background: var(--bg-main);
+    --color-surface: var(--bg-card);
+    --color-surface-container-highest: var(--surface-container-highest);
+    --color-surface-container-high: var(--surface-container-high);
+    --color-surface-container: var(--surface-container);
+    --color-surface-container-low: var(--surface-container-low);
+    --color-surface-container-lowest: var(--surface-container-lowest);
+    
+    --color-on-surface: var(--on-surface);
+    --color-on-surface-variant: var(--on-surface-variant);
+    
+    --color-outline: var(--outline);
+    --color-outline-variant: var(--outline-variant);
+    
+    --color-secondary: var(--secondary);
+    --color-on-secondary: var(--on-secondary);
+    --color-secondary-container: var(--secondary-container);
+    --color-on-secondary-container: var(--on-secondary-container);
+
+    --font-headline: "Syne", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+    --font-body: "DM Sans", "Inter", sans-serif;
+    --font-label: "Inter", sans-serif;
+    --font-display: "Aptos", "Segoe UI", "Inter", system-ui, sans-serif;
+    --font-mono: "DM Sans", "Inter", "Segoe UI", system-ui, sans-serif;
+
+    /* Landing Page specific - Themes */
+    --color-alabaster: var(--landing-page-bg);
+    --color-slate-custom: var(--landing-page-text);
+    --color-indigo-accent: var(--landing-accent);
+    --color-emerald-accent-custom: #10B981;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #4F46E5 0%, #10B981 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Keep Newsreader only on selected public pages (landing/login/register). */
+.newsreader-page {
+    --font-display: "Newsreader", serif;
+    font-family: "Newsreader", serif;
+}
+
+.newsreader-page.font-display,
+.newsreader-page.font-serif,
+.newsreader-page.font-mono,
+.newsreader-page .font-display,
+.newsreader-page .font-serif {
+    font-family: "Newsreader", serif;
+}
+
+.newsreader-page.font-mono,
+.newsreader-page .font-mono {
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* Custom gradient utilities to match prototype */
+.gradient-bg {
+    background: linear-gradient(135deg, #14213d 0%, #2962ff 100%);
+}
+
+.gradient-bg-dark {
+    background: linear-gradient(135deg, #0a0f1c 0%, #1a2a4a 100%);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #120f1a 0%, #4b4a4d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
+}
+
+/* Landing page font - Groote */
+.font-landing {
+    font-family: 'Groote', Inter, system-ui, sans-serif;
+}
+
+/* ============================================================
+   THEME SYSTEM - Light & Dark CSS Variables
+   ============================================================ */
+
+:root {
+    font-family: "Aptos", "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* ── Light Theme (Default) ── */
+    --bg-main: #f9f9ff;
+    --bg-card: #f9f9ff;
+    --bg-sidebar: #f1f3ff;
+    --bg-sidebar-hover: rgba(53, 37, 205, 0.08);
+    --bg-header: #f9f9ff;
+    --bg-input: #ffffff;
+    --bg-input-dark: #ffffff;
+    --bg-badge: rgba(53, 37, 205, 0.1);
+
+    --text-main: #141b2c;
+    --text-muted: #464555;
+    --text-sidebar: #464555;
+    --text-link: #141b2c;
+
+    --border-main: #c7c4d8;
+    --border-sidebar: #e2e8f0;
+    --border-subtle: rgba(20, 27, 44, 0.08);
+    --accent-primary: #3525cd;
+
+    /* Template Specific Variables (Light) */
+    --surface-container-highest: #dbe2f9;
+    --surface-container-high: #e0e8ff;
+    --surface-container: #e9edff;
+    --surface-container-low: #f1f3ff;
+    --surface-container-lowest: #ffffff;
+    --on-surface: #141b2c;
+    --on-surface-variant: #464555;
+    --outline: #777587;
+    --outline-variant: #c7c4d8;
+    
+    --secondary: #006c49;
+    --on-secondary: #ffffff;
+    --secondary-container: #6cf8bb;
+    --on-secondary-container: #00714d;
+
+    /* Landing-specific */
+    --landing-bg: #f4f4f5;
+    --landing-card-bg: #ffffff;
+    --landing-nav-bg: rgba(255, 255, 255, 0.85);
+    --landing-nav-border: rgba(0, 0, 0, 0.08);
+    --landing-hero-blend: #111111;
+    --landing-hero-sub: #6b7280;
+    --landing-stat-bg: #ffffff;
+    --landing-stat-border: #e5e7eb;
+    --landing-feature-img: #f3f4f6;
+    --landing-footer-bg: #111111;
+    --landing-footer-text: #9ca3af;
+    --landing-cta-bg: #f4f4f5;
+    --landing-how-bg: #fafafa;
+    --landing-page-bg: #F8F9FA;
+    --landing-page-text: #1E293B;
+    --landing-accent: #4F46E5;
+}
+
+.dark {
+    /* ── Dark Theme ── */
+    --bg-main: #0A0B0F;
+    --bg-card: #111318;
+    --bg-sidebar: #15181E;
+    --bg-sidebar-hover: rgba(108, 99, 255, 0.14);
+    --bg-header: #111318;
+    --bg-input: #111318;
+    --bg-input-dark: #111318;
+    --bg-badge: rgba(108, 99, 255, 0.2);
+
+    --text-main: #F0F2FF;
+    --text-muted: #94A3B8;
+    --text-sidebar: #94A3B8;
+    --text-link: #F0F2FF;
+
+    --border-main: #1E293B;
+    --border-sidebar: #1E293B;
+    --border-subtle: rgba(240, 242, 255, 0.08);
+    --accent-primary: #6C63FF;
+
+    /* Template Specific Variables (Dark) */
+    --surface-container-highest: #222630;
+    --surface-container-high: #1D212A;
+    --surface-container: #1A1D24;
+    --surface-container-low: #15181E;
+    --surface-container-lowest: #0A0B0F;
+    --on-surface: #F0F2FF;
+    --on-surface-variant: #94A3B8;
+    --outline: #334155;
+    --outline-variant: #1E293B;
+    
+    --secondary: #00E0A3;
+    --on-secondary: #000000;
+    --secondary-container: rgba(0, 224, 163, 0.15);
+    --on-secondary-container: #00E0A3;
+
+    /* Landing-specific */
+    --landing-bg: #050505;
+    --landing-card-bg: #0a0a0a;
+    --landing-nav-bg: rgba(0, 0, 0, 0.7);
+    --landing-nav-border: rgba(255, 255, 255, 0.06);
+    --landing-hero-blend: #ffffff;
+    --landing-hero-sub: #6b7280;
+    --landing-stat-bg: #111111;
+    --landing-stat-border: #1a1a1a;
+    --landing-feature-img: #151515;
+    --landing-footer-bg: #050505;
+    --landing-footer-text: #4b5563;
+    --landing-cta-bg: #050505;
+    --landing-how-bg: #050505;
+    --landing-page-bg: #0A0B0F;
+    --landing-page-text: #F8F9FA;
+    --landing-accent: #818CF8;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+}
+
+/* ── Global Base ── */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fix #19: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+body {
+    min-height: 100vh;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+/* ============================================================
+   GLASS PANEL - Themed
+   ============================================================ */
+.glass-panel {
+    background: var(--landing-nav-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--landing-nav-border);
+    box-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   OBSIDIAN CARD - Themed (stat/feature cards)
+   ============================================================ */
+.obsidian-card {
+    background: var(--landing-stat-bg);
+    border: 1px solid var(--landing-stat-border);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.obsidian-card:hover {
+    box-shadow: 0 4px 24px rgba(108, 99, 255, 0.12);
+}
+
+.laser-text {
+    text-shadow: 0 0 10px rgba(108, 99, 255, 0.45);
+}
+
+.laser-beam {
+    background: linear-gradient(90deg, transparent, #6c63ff, transparent);
+    opacity: 0.8;
+    filter: blur(4px);
+}
+
+/* Subtle grain overlay */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   THEME TOGGLE BUTTON
+   ============================================================ */
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border-main);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+}
+
+/* ============================================================
+   USER SIDEBAR - Themed
+   ============================================================ */
+.sidebar-themed {
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-sidebar);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar-toggle-btn {
+    background: var(--bg-card);
+    color: var(--text-muted);
+    border: 1px solid var(--border-main);
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover {
+    color: var(--accent-primary);
+    border-color: color-mix(in srgb, var(--accent-primary) 40%, transparent);
+}
+
+.sidebar-link-text {
+    color: var(--text-sidebar);
+}
+
+.sidebar-main {
+    background: var(--bg-main);
+    transition: background 0.3s ease;
+}
+
+/* ============================================================
+   FORM INPUTS - Themed
+   ============================================================ */
+.form-input-themed {
+    background: var(--bg-input);
+    border: 1px solid var(--border-main);
+    color: var(--text-main);
+    transition: background 0.3s ease, border-color 0.25s ease, color 0.3s ease;
+}
+
+.form-input-themed:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary) 18%, transparent);
+}
+
+.form-input-themed::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ============================================================
+   AUTH CARD - Themed (Login / Register)
+   ============================================================ */
+.auth-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-main);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .auth-card {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Enforce Aptos for display/serif utility usage across the app by default. */
+.font-display,
+.font-serif {
+    font-family: "Aptos", "Segoe UI", "Inter", system-ui, sans-serif;
+}
+
+.font-mono {
+    font-family: "DM Sans", "Inter", "Segoe UI", system-ui, sans-serif;
+}

@@ -1,0 +1,88 @@
+{
+  "Charts": [
+    {
+      "title": "Churn Status Rate by Payment Method (%)",
+      "type": "bar"
+    },
+    {
+      "title": "Monthly Charges vs Total Charges",
+      "type": "scatter"
+    },
+    {
+      "title": "Total Charges at Risk by Contract Type",
+      "type": "hbar"
+    },
+    {
+      "title": "Total Charges at Risk by Gender",
+      "type": "bar"
+    },
+    {
+      "title": "Total Monthly Charges by Contract Type",
+      "type": "treemap"
+    },
+    {
+      "title": "Monthly Charges at Risk by Gender",
+      "type": "bar"
+    },
+    {
+      "title": "Churn Status Rate by Customer Tenure Cohort (%)",
+      "type": "bar"
+    },
+    {
+      "title": "Churn Status Rate by Gender (%)",
+      "type": "bar"
+    },
+    {
+      "title": "Churn Status Count by Contract Type",
+      "type": "hbar"
+    },
+    {
+      "title": "Churn Status Rate by Total Charges Range (%)",
+      "type": "bar"
+    },
+    {
+      "title": "Avg Customer Tenure by Contract Type",
+      "type": "hbar"
+    },
+    {
+      "title": "Payment Method Distribution",
+      "type": "pie"
+    },
+    {
+      "title": "Churn Status Rate by Monthly Charges Range (%)",
+      "type": "bar"
+    },
+    {
+      "title": "Churn Status Count by Payment Method",
+      "type": "hbar"
+    },
+    {
+      "title": "Churn Status Overview",
+      "type": "donut"
+    },
+    {
+      "title": "Average Customer Tenure by Payment Method",
+      "type": "hbar"
+    },
+    {
+      "title": "Avg Monthly Charges: Churned vs Retained",
+      "type": "bar"
+    },
+    {
+      "title": "Avg Customer Tenure: Churned vs Retained",
+      "type": "bar"
+    },
+    {
+      "title": "Average Customer Tenure by Gender",
+      "type": "hbar"
+    },
+    {
+      "title": "Gender Distribution",
+      "type": "pie"
+    },
+    {
+      "title": "Churn Status Volume by Gender",
+      "type": "stacked_bar"
+    }
+  ]
+}

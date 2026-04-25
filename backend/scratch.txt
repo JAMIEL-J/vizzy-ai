@@ -1,0 +1,11 @@
+328: return f"{metric_name} Trend Over Time"
+1730: title=f'{_beautify_column_name(primary_value_metric)} Trend Over Time',
+1732: reason='Tier 5: Trend analysis for seasonality',
+2222: # 12. Quantity Trend
+2232: slot='', title=f"{_get_metric_prefix(qty_col)} Movement Trend",
+2603: # 3) Trend charts for representative metrics.
+2668: add_chart(ChartRecommendation('', 'Cash Flow Trend', 'line', data, 'HIGH', 'Historical cashflow', format_type='currency', dimension=dates[0], metric=income_col, aggregation='sum'))
+2683: 6. Billing Trend (Line) — revenue timeline
+2768: # ── 6. Billing Trend Over Time (Line) ────────────────────────────────────
+2778: '', 'Hospital Billing Trend', 'line', data, 'HIGH',
+2979: slot='', title=_create_smart_title(metric, date_col) + " Trend",
