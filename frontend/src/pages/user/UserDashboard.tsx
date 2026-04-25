@@ -3288,16 +3288,15 @@ export default function UserDashboard() {
                     <button className="w-8 h-8 rounded-full hover:bg-[#f3f4f4] dark:hover:bg-[#242730] flex items-center justify-center text-[#5a5c5c] dark:text-[#b9bec9]">
                         <span className="material-symbols-outlined text-[18px]">notifications</span>
                     </button>
-                    <div className="flex items-center gap-2 mr-2 px-2 py-1 rounded-full bg-[#f3f4f4] dark:bg-[#242730] border border-[#d8dada] dark:border-[#3a3f49]">
-                        <span className="text-[10px] font-bold text-[#5a5c5c] dark:text-[#b9bec9] uppercase tracking-wider">Demo</span>
-                        <button
-                            onClick={() => setIsDemoMode(!isDemoMode)}
-                            className={`w-6 h-3 rounded-full transition-colors relative ${isDemoMode ? 'bg-indigo-500' : 'bg-gray-300 dark:bg-gray-600'}`}
-                        >
-                            <div className={`absolute top-0.5 w-2 h-2 bg-white rounded-full transition-all ${isDemoMode ? 'right-0.5' : 'left-0.5'}`} />
+                    <div className="flex-1 flex justify-end items-center gap-2">
+                        <button className="w-8 h-8 rounded-full hover:bg-[#f3f4f4] dark:hover:bg-[#242730] flex items-center justify-center text-[#5a5c5c] dark:text-[#b9bec9]">
+                            <span className="material-symbols-outlined text-[18px]">notifications</span>
                         </button>
+                        <SettingsDropdown />
+                        <div className="w-8 h-8 rounded-full border border-[#d8dada] bg-gradient-to-br from-[#e7e8e8] to-[#c8c9c9] flex items-center justify-center text-[11px] font-bold text-[#5a5c5c]">
+                            VX
+                        </div>
                     </div>
-                    <SettingsDropdown />
                     <div className="w-8 h-8 rounded-full border border-[#d8dada] bg-gradient-to-br from-[#e7e8e8] to-[#c8c9c9] flex items-center justify-center text-[11px] font-bold text-[#5a5c5c]">
                         VX
                     </div>
@@ -3306,43 +3305,9 @@ export default function UserDashboard() {
 
             <main className="w-full px-4 md:px-6 xl:px-10 2xl:px-14 py-8 md:py-10">
                 {!selectedDatasetId && !isLoading && (
-                    isDemoMode ? (
-                        <div className="flex flex-col gap-6">
-                            <div className="text-center mb-4">
-                                <h2 className="text-2xl font-extrabold text-[#203044] dark:text-[#eceff4]">Sample Gallery</h2>
-                                <p className="text-[#5a5c5c] dark:text-[#a3a8b3]">Explore high-quality analytics with pre-baked datasets</p>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {Object.entries(DEMO_DATA).map(([id, demo]) => (
-                                    <div
-                                        key={id}
-                                        onClick={() => {
-                                            setSelectedDemoId(id);
-                                            setIsLoading(true);
-                                            setTimeout(() => {
-                                                setSelectedDatasetId('demo-trigger');
-                                                setIsLoading(false);
-                                            }, 800);
-                                        }}
-                                        className="group cursor-pointer rounded-3xl border border-[#eceeee] dark:border-[#2a2d33] bg-white dark:bg-[#17181b] p-6 hover:border-indigo-500 dark:hover:border-indigo-400 transition-all hover:shadow-xl hover:-translate-y-1"
-                                    >
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div className="px-2 py-1 rounded-lg text-[10px] uppercase font-bold tracking-wider bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">
-                                                {demo.domain}
-                                            </div>
-                                            <span className="material-symbols-outlined text-sm text-[#a3a8b3] group-hover:text-indigo-500 transition-colors">arrow_forward</span>
-                                        </div>
-                                        <h3 className="text-lg font-bold text-[#2d2f2f] dark:text-[#eceff4] mb-2">{demo.name}</h3>
-                                        <p className="text-sm text-[#5a5c5c] dark:text-[#a3a8b3] line-clamp-2">{demo.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="rounded-3xl border border-[#eceeee] dark:border-[#2a2d33] bg-white dark:bg-[#17181b] p-10 text-center text-[#7a7c7c] dark:text-[#a3a8b3]">
-                            Select a dataset to start analytics.
-                        </div>
-                    )
+                    <div className="rounded-3xl border border-[#eceeee] dark:border-[#2a2d33] bg-white dark:bg-[#17181b] p-10 text-center text-[#7a7c7c] dark:text-[#a3a8b3]">
+                        Select a dataset to start analytics.
+                    </div>
                 )}
 
                 {(isLoading || (!analytics && !!selectedDatasetId && !error)) && (
