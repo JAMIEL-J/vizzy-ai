@@ -2561,7 +2561,17 @@ export default function UserDashboard() {
             }
         } catch (err: any) {
             if (err.name === 'AbortError') return;
-            setError(err.response?.data?.detail || 'Failed to load analytics');
+
+            // If dataset was deleted, the API returns 404.
+            // We must reset the selection to return to the "Select Dataset" empty state.
+            if (err.response?.status === 404) {
+                setSelectedDatasetId('');
+                sessionStorage.removeItem('vizzy.dashboard.selectedDatasetId');
+                setAnalytics(null);
+                setError('Dataset not found. It may have been deleted.');
+            } else {
+                setError(err.response?.data?.detail || 'Failed to load analytics');
+            }
         } finally {
             setIsLoading(false);
             setIsKPILoading(false);
