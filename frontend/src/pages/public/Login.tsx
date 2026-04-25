@@ -133,6 +133,8 @@ export default function Login() {
                                             <button
                                                 onClick={() => {
                                                     setEmail('usernamevizzy@gmail.com');
+                                                    setPassword('uservizzy123');
+                                                    setConfirmPassword('uservizzy123');
                                                     setStep(2);
                                                 }}
                                                 className="text-[10px] font-bold text-primary hover:underline transition-colors"
