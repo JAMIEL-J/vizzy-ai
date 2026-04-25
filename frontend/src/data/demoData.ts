@@ -1,7 +1,6 @@
 /**
  * Golden Path Demo Data for Vizzy Prototype.
- * This allows the application to function without a live backend
- * or to demonstrate high-quality results to recruiters instantly.
+ * High-fidelity data to ensure no NaN values and a rich visual experience.
  */
 
 export interface DemoChart {
@@ -38,11 +37,12 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
     id: 'sales-demo',
     name: 'Global Electronics Sales 2024',
     domain: 'sales',
-    description: 'Comprehensive sales dataset across 4 regions with product category breakdowns.',
+    description: 'Enterprise sales data across 4 regions with deep category breakdowns.',
     kpis: [
-      { id: 'k1', label: 'Total Revenue', value: '$4.2M', change: '+12.5%', trend: 'up', section: 'Executive Summary' },
+      { id: 'k1', label: 'Total Revenue', value: '$4,250,000', change: '+12.5%', trend: 'up', section: 'Executive Summary' },
       { id: 'k2', label: 'Avg Order Value', value: '$320', change: '-2.1%', trend: 'down', section: 'Executive Summary' },
       { id: 'k3', label: 'Conversion Rate', value: '3.4%', change: '+0.8%', trend: 'up', section: 'Growth' },
+      { id: 'k4', label: 'Net Profit', value: '$840,000', change: '+5.2%', trend: 'up', section: 'Financials' },
     ],
     charts: [
       {
@@ -56,8 +56,9 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
           { Month: 'Jan', Revenue: 200000 }, { Month: 'Feb', Revenue: 220000 },
           { Month: 'Mar', Revenue: 210000 }, { Month: 'Apr', Revenue: 250000 },
           { Month: 'May', Revenue: 280000 }, { Month: 'Jun', Revenue: 310000 },
+          { Month: 'Jul', Revenue: 340000 }, { Month: 'Aug', Revenue: 320000 },
         ],
-        insight: 'Revenue shows a strong upward trend starting in April, likely due to the Spring campaign.'
+        insight: 'Revenue shows a strong upward trend starting in April, correlating with the Q2 Spring campaign.'
       },
       {
         id: 'c2',
@@ -70,7 +71,7 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
           { Category: 'Laptops', Revenue: 1500000 }, { Category: 'Phones', Revenue: 1200000 },
           { Category: 'Accessories', Revenue: 800000 }, { Category: 'Tablets', Revenue: 700000 },
         ],
-        insight: 'Laptops remain the primary revenue driver, contributing over 35% of total sales.'
+        insight: 'Laptops remain the primary revenue driver, contributing 35% of total sales.'
       },
       {
         id: 'c3',
@@ -83,7 +84,33 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
           { Region: 'North America', Sales: 1200000 }, { Region: 'Europe', Sales: 900000 },
           { Region: 'Asia', Sales: 1100000 }, { Region: 'LATAM', Sales: 400000 },
         ],
-        insight: 'North America and Asia are nearly tied for lead, while LATAM represents a significant growth opportunity.'
+        insight: 'North America and Asia are nearly tied for lead, while LATAM represents the fastest growing region.'
+      },
+      {
+        id: 'c4',
+        title: 'Category Growth Rate',
+        type: 'bar',
+        section: 'Growth',
+        metric: 'Growth%',
+        dimension: 'Category',
+        data: [
+          { Category: 'Laptops', Growth: 12 }, { Category: 'Phones', Growth: 8 },
+          { Category: 'Accessories', Growth: 25 }, { Category: 'Tablets', Growth: -5 },
+        ],
+        insight: 'Accessories are seeing explosive growth (25%), while tablet sales are slightly declining.'
+      },
+      {
+        id: 'c5',
+        title: 'Sales vs Target',
+        type: 'line',
+        section: 'Executive Summary',
+        metric: 'Value',
+        dimension: 'Month',
+        data: [
+          { Month: 'Jan', Actual: 200000, Target: 180000 }, { Month: 'Feb', Actual: 220000, Target: 210000 },
+          { Month: 'Mar', Actual: 210000, Target: 220000 }, { Month: 'Apr', Actual: 250000, Target: 230000 },
+        ],
+        insight: 'The team has outperformed targets in 3 out of 4 months of the first quarter.'
       }
     ]
   },
@@ -91,11 +118,12 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
     id: 'churn-demo',
     name: 'SaaS Customer Churn Analysis',
     domain: 'churn',
-    description: 'Analysis of user retention and churn drivers for a B2B SaaS platform.',
+    description: 'Deep dive into user retention and churn drivers for a B2B SaaS platform.',
     kpis: [
       { id: 'ck1', label: 'Monthly Churn Rate', value: '2.4%', change: '-0.5%', trend: 'up', section: 'Retention' },
       { id: 'ck2', label: 'Net Revenue Retention', value: '104%', change: '+2.0%', trend: 'up', section: 'Financials' },
       { id: 'ck3', label: 'Customer LTV', value: '$1,200', change: '+15%', trend: 'up', section: 'Financials' },
+      { id: 'ck4', label: 'Active Users', value: '12.5k', change: '+4.1%', trend: 'up', section: 'Growth' },
     ],
     charts: [
       {
@@ -108,7 +136,7 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
         data: [
           { Plan: 'Basic', Churn: 0.05 }, { Plan: 'Pro', Churn: 0.02 }, { Plan: 'Enterprise', Churn: 0.01 },
         ],
-        insight: 'Basic plan users churn at 5x the rate of Enterprise users, suggesting a need for better onboarding for entry-level tiers.'
+        insight: 'Basic plan users churn at 5x the rate of Enterprise users, suggesting onboarding gaps.'
       },
       {
         id: 'cc2',
@@ -120,7 +148,20 @@ export const DEMO_DATA: Record<string, DemoDataset> = {
         data: [
           { Tickets: '0-2', Churn: 0.01 }, { Tickets: '3-5', Churn: 0.04 }, { Tickets: '6+', Churn: 0.12 },
         ],
-        insight: 'There is a sharp correlation between support ticket volume and churn once users cross the 5-ticket threshold.'
+        insight: 'A critical threshold exists at 5 tickets; churn increases exponentially beyond this point.'
+      },
+      {
+        id: 'cc3',
+        title: 'User Activity Distribution',
+        type: 'pie',
+        section: 'Engagement',
+        metric: 'Users',
+        dimension: 'Activity Level',
+        data: [
+          { Level: 'Power User', Users: 2000 }, { Level: 'Active', Users: 5000 },
+          { Level: 'Occasional', Users: 3000 }, { Level: 'Inactive', Users: 2500 },
+        ],
+        insight: 'Only 16% of users are "Power Users", indicating a potential for better feature discovery.'
       }
     ]
   }

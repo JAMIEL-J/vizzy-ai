@@ -12,6 +12,7 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import get_settings
 from app.core.logger import get_logger
+from app.models.database import init_db
 from app.core.exceptions import (
     VizzyException,
     AuthenticationError,
@@ -24,6 +25,10 @@ from app.api.router import api_router
 
 logger = get_logger(__name__)
 settings = get_settings()
+
+# Force DB initialization at startup to prevent "no such table" errors in cloud environments
+init_db()
+logger.info("Database tables initialized at startup")
 
 
 @asynccontextmanager

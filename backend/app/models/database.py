@@ -48,8 +48,7 @@ def init_db() -> None:
     """
     # Explicitly import models to ensure they are registered with SQLModel.metadata
     from app.models.user import User
-    from app.models.dataset import Dataset, DatasetVersion
-    # Add other models as needed
+    from app.models.dataset import Dataset
 
     SQLModel.metadata.create_all(engine)
     _ensure_users_name_column()

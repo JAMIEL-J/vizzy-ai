@@ -23,7 +23,7 @@ class DatabaseSettings(BaseSettings):
     type: str = Field(default="sqlite")
     
     # SQLite settings
-    sqlite_path: str = Field(default=":memory:")
+    sqlite_path: str = Field(default="data/vizzy.db")
 
     # PostgreSQL settings (used if type=postgresql)
     host: str = Field(default="localhost")
