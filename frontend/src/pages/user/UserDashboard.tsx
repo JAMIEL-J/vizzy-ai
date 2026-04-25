@@ -2313,6 +2313,17 @@ export default function UserDashboard() {
     }, [selectedDatasetId]);
 
     useEffect(() => {
+        // When switching to/from Demo Mode or changing the Demo Dataset,
+        // we must completely wipe the current state and caches to avoid "cross-contamination"
+        setAnalytics(null);
+        setNarrative(null);
+        clearFilters();
+        setTargetValue('all');
+        cacheRef.current = createDashboardCacheBundle();
+        sessionStorage.removeItem(DASHBOARD_SESSION_CACHE_KEY);
+    }, [isDemoMode, selectedDemoId]);
+
+    useEffect(() => {
         const prev = previousDatasetIdRef.current;
         if (prev && prev !== selectedDatasetId) {
             // Recreate caches on dataset switches to avoid stale cross-dataset payloads.
