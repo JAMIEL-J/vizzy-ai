@@ -42,10 +42,15 @@ else:
 def init_db() -> None:
     """
     Initialize database tables.
-    
+
     Call this on application startup to create all tables.
     In production, use Alembic migrations instead.
     """
+    # Explicitly import models to ensure they are registered with SQLModel.metadata
+    from app.models.user import User
+    from app.models.dataset import Dataset, DatasetVersion
+    # Add other models as needed
+
     SQLModel.metadata.create_all(engine)
     _ensure_users_name_column()
 
