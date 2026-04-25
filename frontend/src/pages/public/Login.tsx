@@ -119,15 +119,38 @@ export default function Login() {
                                         <a href="#" className="text-primary font-bold hover:underline ml-1">Learn more</a>
                                     </div>
                                 </div>
-                                <div className="mt-auto flex items-center justify-between pt-6">
-                                    <div className="flex gap-2">
-                                        <Link to="/register" className="text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-surface-container-low transition-colors">
-                                            Create account
-                                        </Link>
+                                <div className="mt-auto flex flex-col gap-6 pt-6">
+                                    <div className="p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="material-symbols-outlined text-primary text-sm">bolt</span>
+                                            <span className="text-xs font-bold uppercase tracking-widest text-primary">Recruiter Demo</span>
+                                        </div>
+                                        <p className="text-xs text-on-surface-variant mb-3 leading-relaxed">
+                                            Quickly explore the platform with a pre-configured account.
+                                        </p>
+                                        <div className="flex items-center justify-between bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/30">
+                                            <span className="text-[11px] font-medium text-on-surface-variant truncate mr-2">usernamevizzy@gmail.com</span>
+                                            <button
+                                                onClick={() => {
+                                                    setEmail('usernamevizzy@gmail.com');
+                                                    setStep(2);
+                                                }}
+                                                className="text-[10px] font-bold text-primary hover:underline transition-colors"
+                                            >
+                                                Use this
+                                            </button>
+                                        </div>
                                     </div>
-                                    <button type="submit" className="bg-primary text-on-primary font-bold px-8 py-2.5 rounded-lg hover:bg-primary-container transition-all active:scale-95 shadow-sm">
-                                        Next
-                                    </button>
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex gap-2">
+                                            <Link to="/register" className="text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-surface-container-low transition-colors">
+                                                Create account
+                                            </Link>
+                                        </div>
+                                        <button type="submit" className="bg-primary text-on-primary font-bold px-8 py-2.5 rounded-lg hover:bg-primary-container transition-all active:scale-95 shadow-sm">
+                                            Next
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

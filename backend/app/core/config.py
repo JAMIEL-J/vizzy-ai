@@ -23,7 +23,7 @@ class DatabaseSettings(BaseSettings):
     type: str = Field(default="sqlite")
     
     # SQLite settings
-    sqlite_path: str = Field(default="data/vizzy.db")
+    sqlite_path: str = Field(default="/data/vizzy.db")
 
     # PostgreSQL settings (used if type=postgresql)
     host: str = Field(default="localhost")
@@ -81,7 +81,7 @@ class StorageSettings(BaseSettings):
 
     model_config = SettingsConfigDict(env_prefix="STORAGE_")
 
-    data_dir: str = Field(default="/tmp/data/uploads")
+    data_dir: str = Field(default="/data/uploads")
     duckdb_path: str = Field(default=":memory:")
     max_file_size_mb: int = Field(default=100, ge=1, le=1000)
 
