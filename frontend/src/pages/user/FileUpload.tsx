@@ -33,6 +33,33 @@ export default function FileUpload() {
 
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
+    const normalizeErrorMessage = (error: any, fallback: string) => {
+        const detail = error?.response?.data?.detail;
+        const message = typeof detail === 'string' && detail.trim().length > 0
+            ? detail.trim()
+            : error?.message;
+        return message && String(message).trim().length > 0 ? String(message).trim() : fallback;
+    };
+
+    const getOrCreateDatasetForFile = async (fileName: string) => {
+        try {
+            return await datasetService.createDataset(fileName, 'Uploaded via Web Interface');
+        } catch (error: any) {
+            const status = error?.response?.status;
+            if (status !== 409) {
+                throw error;
+            }
+
+            // Retry path: if dataset already exists for this user, reuse it to create a new version.
+            const datasets = await datasetService.listDatasets();
+            const existing = datasets.find(d => d.name === fileName && d.is_active);
+            if (!existing) {
+                throw error;
+            }
+            return existing;
+        }
+    };
+
     const toActionableFailureMessage = (backendError?: string | null) => {
         const normalized = (backendError || '').trim();
         const shortError = normalized.length > 160 ? `${normalized.slice(0, 160)}...` : normalized;
@@ -126,7 +153,7 @@ export default function FileUpload() {
         let progressInterval: ReturnType<typeof setInterval> | null = null;
 
         try {
-            const dataset = await datasetService.createDataset(selectedFile.name, 'Uploaded via Web Interface');
+            const dataset = await getOrCreateDatasetForFile(selectedFile.name);
             setUploadedDatasetId(dataset.id);
             sessionStorage.setItem('vizzy.dashboard.selectedDatasetId', dataset.id);
             setProgress(30);
@@ -144,13 +171,16 @@ export default function FileUpload() {
             setProgress(92);
             await pollDuckdbReadiness(dataset.id);
 
-        } catch (error) {
+        } catch (error: any) {
             if (progressInterval) {
                 clearInterval(progressInterval);
             }
             console.error('Upload failed:', error);
             setUploadPhase('failed');
-            setFailureMessage('Upload failed. Please retry the upload. If this persists, check file format/size or contact support with the dataset name.');
+            setFailureMessage(normalizeErrorMessage(
+                error,
+                'Upload failed. Please retry the upload. If this persists, check file format/size or contact support with the dataset name.'
+            ));
             setStatusMessage('Upload failed.');
             setIsUploading(false);
             setProgress(0);
