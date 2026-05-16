@@ -2,8 +2,7 @@
 
 Vizzy is a **trust-first analytics engine** that transforms raw tabular data into high-signal conversational insights, KPIs, and domain-aware visualizations.
 
-## 🚀 Live Prototype
-**Backend:** [Link to Hugging Face Space] | **Frontend:** [Link to Vercel]
+## 🚀 Live Prototype [https://vizzy-ai-dqgw.vercel.app/]
 
 > **Recruiter Note:** To experience the system instantly without configuring API keys, please enable **"Demo Mode"** in the dashboard header and explore the **Sample Gallery**.
 
